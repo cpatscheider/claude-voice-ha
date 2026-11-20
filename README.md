@@ -38,7 +38,7 @@ fallback agent (e.g. `conversation.google_ai_conversation`).
 ## Develop
 
 Tests run against a real Home Assistant core and a fake sidecar speaking the contract over HTTP.
-Requires Python ≥ 3.13.
+Requires Python ≥ 3.14.2 (what Home Assistant 2026.10 needs).
 
 ```sh
 python -m venv .venv && . .venv/bin/activate
