@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Claude-Voice-Sidecar",
+        "description": "Verbindung zum claude-voice-Sidecar, das die Claude Code CLI ausführt.",
+        "data": {
+          "url": "Sidecar-URL",
+          "token": "Bearer-Token"
+        },
+        "data_description": {
+          "url": "Basis-URL des Sidecars, ohne Pfad.",
+          "token": "Das SIDECAR_TOKEN des Sidecars."
+        }
+      },
+      "reconfigure": {
+        "title": "Sidecar neu konfigurieren",
+        "data": {
+          "url": "Sidecar-URL",
+          "token": "Bearer-Token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Das Sidecar antwortet nicht auf /healthz.",
+      "invalid_auth": "Das Sidecar hat das Token abgelehnt."
+    },
+    "abort": {
+      "already_configured": "Dieses Sidecar ist bereits eingerichtet.",
+      "reconfigure_successful": "Neu konfiguriert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Claude-Voice-Optionen",
+        "data": {
+          "domains": "Domänen im Zustands-Snapshot",
+          "sensor_device_classes": "Sensor-Geräteklassen im Snapshot",
+          "max_entities": "Höchstzahl Entitäten im Snapshot",
+          "speaker_area_first": "Raum des Sprechers zuerst",
+          "fallback_agent": "Ersatz-Konversationsagent"
+        },
+        "data_description": {
+          "domains": "Nur Entitäten, die für Assist freigegeben sind. Alles andere kann Claude per GetLiveContext nachschlagen, kostet dann aber einen Tool-Aufruf.",
+          "sensor_device_classes": "Sensoren kommen nur mit einer dieser Geräteklassen in den Snapshot.",
+          "fallback_agent": "Antwortet, wenn das Sidecar ausgefallen, zu langsam oder belegt ist oder das Pro-Limit erreicht hat."
+        }
+      }
+    }
+  }
+}

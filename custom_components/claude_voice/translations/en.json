@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Claude Voice sidecar",
+        "description": "Connect to the claude-voice sidecar that runs the Claude Code CLI.",
+        "data": {
+          "url": "Sidecar URL",
+          "token": "Bearer token"
+        },
+        "data_description": {
+          "url": "Base URL of the sidecar, without a path.",
+          "token": "The sidecar's SIDECAR_TOKEN."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure the sidecar",
+        "data": {
+          "url": "Sidecar URL",
+          "token": "Bearer token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "The sidecar did not answer on /healthz.",
+      "invalid_auth": "The sidecar rejected the token."
+    },
+    "abort": {
+      "already_configured": "This sidecar is already configured.",
+      "reconfigure_successful": "Reconfigured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Claude Voice options",
+        "data": {
+          "domains": "Domains in the state snapshot",
+          "sensor_device_classes": "Sensor device classes in the snapshot",
+          "max_entities": "Maximum entities in the snapshot",
+          "speaker_area_first": "List the speaker's area first",
+          "fallback_agent": "Fallback conversation agent"
+        },
+        "data_description": {
+          "domains": "Only entities exposed to Assist are included. Claude can still look up anything else with GetLiveContext, at the cost of a tool call.",
+          "sensor_device_classes": "Sensors are only included if they have one of these device classes.",
+          "fallback_agent": "Answers when the sidecar is down, times out, is busy or hits the Pro usage limit."
+        }
+      }
+    }
+  }
+}

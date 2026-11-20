@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: docker
+    container:
+      image: catthehacker/ubuntu:act-latest
+    steps:
+      - name: Checkout
+        uses: https://github.com/actions/checkout@v3.4.0
+      - name: Set up Python
+        uses: https://github.com/actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install
+        # The conversation component's own requirements are not pulled in by the test harness.
+        run: |
+          pip install -r requirements_test.txt
+          python - <<'PY' > /tmp/conv-reqs.txt
+          import json, os, homeassistant
+          m = os.path.join(os.path.dirname(homeassistant.__file__), "components/conversation/manifest.json")
+          print("\n".join(json.load(open(m))["requirements"]))
+          PY
+          pip install -r /tmp/conv-reqs.txt
+      - name: Tests
+        run: python -m pytest -q
